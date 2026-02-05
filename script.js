@@ -1,12 +1,16 @@
 'use strict';
-let lang = prompt("Какой язык?", 'ru или eng');
+let lang = prompt("Какой язык?", 'ru').trim().toLowerCase(); //это вообще добавляют в реальный работах? Нужно ли?
+let namePerson = prompt("Введите имя:", "Артем").trim().toLowerCase();
+
 const daysOfTheWeekRu = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'];
 const daysOfTheWeekEng = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const days = {
     ru: ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'],
     eng: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 }
-const namePerson = prompt("Введите имя:", "Артем");
+
+
+
 //1st variant with if:
 // if(lang === 'ru'){
 //     console.log(daysOfTheWeekRu);
@@ -33,6 +37,7 @@ const namePerson = prompt("Введите имя:", "Артем");
 //3d variant:
 console.log(days[lang]);
 
-namePerson === "Артем" ? console.log("Директор") : 
-namePerson === "Александр" ? console.log("Преподаватель") :
-console.log("студент");
+let role = namePerson === "артем" ? "Директор" : 
+namePerson === "александр" ? "Преподаватель" :
+"студент";
+console.log(role);
