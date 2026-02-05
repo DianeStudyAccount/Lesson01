@@ -12,9 +12,9 @@ let rollback = 250;
 let fullPrice = (screenPrice + servicePrice1 + servicePrice2);
 let servicePercentPrice = Math.ceil(fullPrice - rollback);
 console.log(`The service price is ${servicePercentPrice} rub.`);
-if(fullPrice > 30000){
+if(fullPrice >= 30000){
     console.log('Даем скидку в 10%');
-} else if (fullPrice <= 30000 && fullPrice >= 15000 ){
+} else if (fullPrice < 30000 && fullPrice >= 15000 ){
     console.log('Даем скидку в 5%');
 } else if (fullPrice < 15000 && fullPrice >= 0) {
     console.log('Скидка не предусмотрена.');
