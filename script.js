@@ -1,9 +1,19 @@
-const title = "Start";
-let screens = [1, 2, 3, 4];
-const screenPrice = 50;
-let rollback = 10;
-const fullPrice = 200;
-let adaptive = true;
+'use strict';
 
-alert (`Full price is ${fullPrice}`);
-console.log(screens.forEach(screen => console.log(screen)));
+const strFn = function(arg) {
+    if(typeof arg !== "string") {
+        alert("This is not a string!");
+        return;
+    } 
+       let str = arg.trim();
+
+        if(str.length > 30){
+            str = arg.slice(0, 30) + "..."
+        }
+        return str;
+    }
+
+
+console.log(strFn("hsddksjjdfhkshdfkhdskjfhksdjfhkjdshfkjsdhfkdshfdfdfdfdfdfdfdsfs"));
+console.log(strFn(123));
+console.log(strFn(" Hi.  "));
