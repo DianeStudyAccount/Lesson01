@@ -12,7 +12,7 @@ let fullPrice;
 let servicePercentPrice;
 
 const isNum = function (num) {
-  return !isNaN(parseFloat(num)) && isFinite(num);
+  return !isNaN(num) && isFinite(num);
 };
 
 const asking = function () {
@@ -23,7 +23,7 @@ const asking = function () {
   );
   do {
     screenPrice = prompt("Сколько будет стоить эта работа?");
-  } while (!isNum(screenPrice));
+  } while (screenPrice === null || !isNum(+screenPrice));           //можно ли так решить проблему со строкой и отменой?
   screenPrice = parseFloat(screenPrice);
 
   adaptive = confirm("Нужен ли адаптив на сайте?");
@@ -43,7 +43,7 @@ const getAllServicePrices = function () {
 
     do {
       price = prompt("Сколько это будет стоить?");
-    } while (!isNum(price));
+    } while (price === null || !isNum(+price));
     sum += parseFloat(price);
   }
   return sum;
