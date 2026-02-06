@@ -1,9 +1,30 @@
-const title = "Start";
-let screens = [1, 2, 3, 4];
-const screenPrice = 50;
-let rollback = 10;
-const fullPrice = 200;
-let adaptive = true;
+'use strict';
 
-alert (`Full price is ${fullPrice}`);
-console.log(screens.forEach(screen => console.log(screen)));
+const guessingGame = function(){
+    let num = Math.floor(Math.random() * 100) + 1;
+        function askToGuess(){
+            let guessQuestion = prompt('Угадай число от 1 до 100');
+            const guess = Number(guessQuestion); //handling null=0 in an easy way 
+
+            if(guessQuestion === null) {
+                alert("Игра окончена");             
+                return;                         //exit the prog
+            }
+            if (isNaN(guess) || guessQuestion.trim() === ''){
+                alert('Введи число!');
+                return askToGuess();
+            }
+            if (guess < num) {
+                alert( "Загаданное число больше");
+                return askToGuess();
+             } 
+             if (guess > num) {
+                alert( "Загаданное число меньше");
+                return askToGuess();
+             }
+        alert("Поздравляю, Вы угадали!!!");
+
+    }
+   askToGuess();
+}
+guessingGame();
