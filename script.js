@@ -1,9 +1,25 @@
-const title = "Start";
-let screens = [1, 2, 3, 4];
-const screenPrice = 50;
-let rollback = 10;
-const fullPrice = 200;
-let adaptive = true;
+"use strict";
+let showWeek = document.querySelector("#week");
+const weekArr = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday"
+];
+let today = new Date().getDay(); //0 = Sunday, нужно перестроить дату
+today = today === 0 ? 6 : today - 1;
 
-alert (`Full price is ${fullPrice}`);
-console.log(screens.forEach(screen => console.log(screen)));
+showWeek.innerHTML = "";
+
+weekArr.forEach((day, idx) => {
+  if (idx === today) {
+    showWeek.innerHTML += `<b>${day}</b><br>`;
+  } else if (idx === 5 || idx === 6) {
+    showWeek.innerHTML += `<i>${day}</i><br>`;
+  } else {
+    showWeek.innerHTML += `${day}<br>`;
+  }
+});
