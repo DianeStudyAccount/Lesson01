@@ -59,7 +59,11 @@ const appData = {
         price = prompt("Сколько это будет стоить?");
       } while (price === null || !this.isNum(+price));
      
-      this.services[name] = +price; //i итератор цикла
+      if(this.services[name]){
+        this.services[name].push(+price);
+      } else {
+        this.services[name] = [+price];
+      }
     }
 
     this.screenPrice = parseFloat(this.screenPrice);
@@ -67,13 +71,14 @@ const appData = {
   },
 
   addPrices: function () {
-    for (let screen of this.screens) {
-          this.screenPrice += +screen.price;        
-     }
-       for (let key in this.services) {
-      this.allServicePrices += this.services[key];
-    }
-  },
+  this.screenPrice = this.screens.reduce((sum, screen) => {
+    return sum + +screen.price;
+  }, 0);
+
+  this.allServicePrices = Object.values(this.services).reduce((sum, arr) => {
+      return sum + arr.reduce((first, second) => first + second, 0);
+    }, 0);
+},
   
   getFullPrice: function () {
     this.fullPrice = this.screenPrice + this.allServicePrices;
